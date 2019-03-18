@@ -23,7 +23,13 @@ int getMax1(int n) {
 }
 
 int getMax2(int n) {
-	std::vec
+	std::vector<int> maxArray(n);
+	for (int i = 0; i < n; i++) {
+		int q = -0x37373737;
+		for (auto j = 1; j < sizeof(price) / sizeof(price[0]); j++) {
+			q = max(q, price[j]);
+		}
+	}
 }
 
 int main() {

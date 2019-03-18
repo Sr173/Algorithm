@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm", "Algorithm\Algo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dynamic-programming", "dynamic-programming\dynamic-programming.vcxproj", "{288F7167-1639-4510-9A97-E147E80F4652}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SearchBlackMemory", "SearchBlackMemory\SearchBlackMemory.vcxproj", "{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{288F7167-1639-4510-9A97-E147E80F4652}.Release|x64.Build.0 = Release|x64
 		{288F7167-1639-4510-9A97-E147E80F4652}.Release|x86.ActiveCfg = Release|Win32
 		{288F7167-1639-4510-9A97-E147E80F4652}.Release|x86.Build.0 = Release|Win32
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Debug|x64.ActiveCfg = Debug|x64
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Debug|x64.Build.0 = Debug|x64
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Debug|x86.ActiveCfg = Debug|Win32
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Debug|x86.Build.0 = Debug|Win32
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Release|x64.ActiveCfg = Release|x64
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Release|x64.Build.0 = Release|x64
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Release|x86.ActiveCfg = Release|Win32
+		{D5168F4A-98FB-434A-9788-4B7F13EE4E7B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

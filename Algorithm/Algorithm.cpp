@@ -1,8 +1,8 @@
-﻿#include<iostream>
-
-#include<stdlib.h>
-#include "algorithm"
-#include<time.h>
+﻿#include <iostream>
+#include "deque"
+#include <stdlib.h>
+#include  "algorithm"
+#include <time.h>
 
 #define MAX_VALUE 10000
 #define random() rand()%MAX_VALUE
@@ -45,19 +45,20 @@ public:
 		else {
 			node->right = newNode;
 		}
+		newNode->parent = node;
 		return newNode;
 	}
 	void lRotate(RBTreeNode* node) {
 		auto target = node->right;
-		node->right = target->left;
+		node->right = target->left;//将target的左子树给右子树
 		if (target->left != nullptr) {
 			target->left->parent = node;
 		}
-		target->parent = node->parent;
+		target->parent = node->parent;//将node的父节点给target
 		if (node->parent == nullptr) {
 			root = target;
 		}
-		else if (node == node->parent->left) {
+		else if (node == node->parent->left) {//如果node是左子树
 			node->parent->left = target;
 		}
 		else {
@@ -73,29 +74,47 @@ public:
 			target->right->parent = node;
 		}
 		target->parent = node->parent;
-		if (node->parent == nullptr) {
+		if (target->parent == nullptr) {
 			root = target;
 		}
-		else if (node == node->parent->left) {
-			node->parent->left = target;
+		else if (target == target->parent->left) {
+			target->parent->left = target;
 		}
 		else {
-			node->parent->right = target;
+			target->parent->right = target;
 		}
 		target->right = node;
 		node->parent = target;
 	}
-
 	void print() {
 		printTree(root);
 		cout << endl;
 	}
-
+	void levelPrint() {
+		std::deque<RBTreeNode*> nodeQue;
+		nodeQue.push_back(root);
+		cout << root->val << endl;
+		while (nodeQue.size()) {
+			int size = nodeQue.size();
+			for (auto i = 0; i < size;i++) {
+				auto front = nodeQue.front();
+				front->left ? cout << front->left->val : cout << "*";
+				cout << " ";
+				front->right ? cout << front->right->val : cout << "*";
+				cout << " ";
+				if (front->left) nodeQue.push_back(front->left);
+				if (front->right) nodeQue.push_back(front->right);
+				nodeQue.pop_front();
+			}
+			cout << endl;
+		}
+	}
+	auto getRoot() { return root; }
 private:
 	void printTree(RBTreeNode* node) {
 		if (node == nullptr)
 			return;
-		cout << node->val << " " ;
+		cout << node->val << "(" << (node->parent ? node->parent->val : 0) << ")" << " ";
 		printTree(node->left);
 		printTree(node->right);
 	}
@@ -105,17 +124,18 @@ private:
 void main()
 {
 	RBTree* rbTree = new RBTree();
-	auto node = rbTree->insert(0, true, 1);
+	auto node = rbTree->insert(0, true, 1); 
 	auto node_2 = rbTree->insert(node, true, 2);
 	auto node_3 = rbTree->insert(node, false, 3);
 	rbTree->insert(node_2, true, 4);
 	rbTree->insert(node_2, false, 5);
 	rbTree->insert(node_3, true, 6);
 	rbTree->insert(node_3, false, 7);
-	rbTree->print();
-	rbTree->rRotate(node);
+	rbTree->levelPrint();
+	rbTree->rRotate(rbTree->getRoot());
 	//rbTree->lRotate(node);
-
-	rbTree->print();
+	rbTree->levelPrint();
+	rbTree->lRotate(rbTree->getRoot());
+	rbTree->levelPrint();
 
 }
